@@ -9,14 +9,14 @@ import java.util.List;
 
 @Service
 public class StationService {
-    private StationRepository stationRepository;
+    private StationRepository repository;
 
     @Autowired
-    public StationService(StationRepository stationRepository) {
-        this.stationRepository = stationRepository;
+    public StationService(StationRepository repository) {
+        this.repository = repository;
     }
 
     public List<StationEdit> findAllStations() {
-        return stationRepository.findAll();
+        return repository.findAll();
     }
 }

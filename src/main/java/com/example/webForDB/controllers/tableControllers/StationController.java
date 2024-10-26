@@ -12,19 +12,19 @@ import java.util.List;
 
 @Controller
 public class StationController {
-    private StationService stationService;
+    private StationService service;
     private DBConnectHelper dbConnectHelper;
 
     @Autowired
-    public StationController(StationService stationService, DBConnectHelper dbConnectHelper) {
-        this.stationService = stationService;
+    public StationController(StationService service, DBConnectHelper dbConnectHelper) {
+        this.service = service;
         this.dbConnectHelper = dbConnectHelper;
     }
 
     @GetMapping("choose_table/station_list")
     public String showStationList(Model model) {
         if (dbConnectHelper.checkConnection()) {
-            List<StationEdit> stations = stationService.findAllStations();
+            List<StationEdit> stations = service.findAllStations();
             model.addAttribute("stations", stations);
             return "tables/edit/station_list";
         }

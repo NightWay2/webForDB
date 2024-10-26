@@ -96,7 +96,7 @@ public class MeasurementRepository {
         try {
             if (dbConnectHelper.openConnection()) {
                 Connection connection = DBConnectHelper.getConnection();
-                String query = "SELECT COUNT(*) FROM measurment";
+                String query = "select count(*) from measurment";
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                     ResultSet resultSet = preparedStatement.executeQuery();
                     if (resultSet.next()) {

@@ -9,11 +9,11 @@ import java.util.List;
 
 @Service
 public class MeasurementService {
-    private MeasurementRepository measurementRepository;
+    private MeasurementRepository repository;
 
     @Autowired
-    public MeasurementService(MeasurementRepository measurementRepository) {
-        this.measurementRepository = measurementRepository;
+    public MeasurementService(MeasurementRepository repository) {
+        this.repository = repository;
     }
 
     /*public List<Measurement> findAllMeasurements() { // todo del
@@ -25,11 +25,11 @@ public class MeasurementService {
     }*/
 
     public List<MeasurementEdit> findMeasurementsWithPagination(int offset, int limit) {
-        return measurementRepository.findAllWithPagination(offset, limit);
+        return repository.findAllWithPagination(offset, limit);
     }
 
     public int countAllMeasurements() {
-        return measurementRepository.countAll();
+        return repository.countAll();
     }
 
 }

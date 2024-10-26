@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Category List</title>
+  <link rel="stylesheet" type="text/css" href="/css/tables.css">
+</head>
+<body>
+<h2>Categories</h2>
+
+<div class="navigation">
+  <form action="#" th:action="@{/choose_table}" method="get">
+    <button type="submit">Back to Choose Table</button>
+  </form>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID Measured Unit</th>
+    <th>Title</th>
+    <th>Unit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="measured_unit : ${measured_units}">
+    <td th:text="${measured_unit.id_measured_unit}"></td>
+    <td th:text="${measured_unit.title}"></td>
+    <td th:text="${measured_unit.unit}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

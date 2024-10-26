@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Category List</title>
+  <link rel="stylesheet" type="text/css" href="/css/tables.css">
+</head>
+<body>
+<h2>Mqtt Message Unit</h2>
+
+<div class="navigation">
+  <form action="#" th:action="@{/choose_table}" method="get">
+    <button type="submit">Back to Choose Table</button>
+  </form>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>Station Name</th>
+    <th>Measured Unit Title</th>
+    <th>Message</th>
+    <th>Order</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="messageUnit : ${messageUnits}">
+    <td th:text="${messageUnit.station_name}"></td>
+    <td th:text="${messageUnit.measured_unit_title}"></td>
+    <td th:text="${messageUnit.message}"></td>
+    <td th:text="${messageUnit.order}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

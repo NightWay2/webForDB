@@ -22,8 +22,24 @@
         <button type="submit">Station Table</button>
     </form>
 
-    <form action="#" th:action="@{/one_more_table}" method="get">
-        <button type="submit">One More Table</button>
+    <form action="#" th:action="@{choose_table/favorite_list}" method="get">
+        <button type="submit">Favorite Table</button>
+    </form>
+
+    <form action="#" th:action="@{choose_table/measured_unit_list}" method="get">
+        <button type="submit">Measured Unit Table</button>
+    </form>
+
+    <form action="#" th:action="@{choose_table/mqtt_message_unit_list}" method="get">
+        <button type="submit">Mqtt Message Unit Table</button>
+    </form>
+
+    <form action="#" th:action="@{choose_table/mqtt_server_list}" method="get">
+        <button type="submit">Mqtt Server Table</button>
+    </form>
+
+    <form action="#" th:action="@{choose_table/optimal_value_list}" method="get">
+        <button type="submit">Optimal Value Table</button>
     </form>
 </div>
 

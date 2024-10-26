@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Category List</title>
+  <link rel="stylesheet" type="text/css" href="/css/tables.css">
+</head>
+<body>
+<h2>Optimal Value</h2>
+
+<div class="navigation">
+  <form action="#" th:action="@{/choose_table}" method="get">
+    <button type="submit">Back to Choose Table</button>
+  </form>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>Designation</th>
+    <th>Title</th>
+    <th>Bottom Border</th>
+    <th>Upper Border</th>
+    <th>Unit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="optimalValue : ${optimalValues}">
+    <td th:text="${optimalValue.designation}"></td>
+    <td th:text="${optimalValue.title}"></td>
+    <td th:text="${optimalValue.bottom_border}"></td>
+    <td th:text="${optimalValue.upper_border}"></td>
+    <td th:text="${optimalValue.unit}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
