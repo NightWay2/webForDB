@@ -1,8 +1,7 @@
-package com.example.webForDB.controllers;
+package com.example.webForDB.controllers.tableControllers;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.Measurement;
-import com.example.webForDB.models.modelsWithoutId.MeasurementClear;
+import com.example.webForDB.models.modelsEdit.MeasurementEdit;
 import com.example.webForDB.services.MeasurementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,13 +52,13 @@ public class MeasurementController {
 
             int offset = (pageNum - 1) * RECORDS_PER_PAGE;
 
-            List<MeasurementClear> measurements = measurementService.findMeasurementsWithPagination(offset, RECORDS_PER_PAGE);
+            List<MeasurementEdit> measurements = measurementService.findMeasurementsWithPagination(offset, RECORDS_PER_PAGE);
 
             model.addAttribute("measurements", measurements);
             model.addAttribute("currentPage", pageNum);
             model.addAttribute("totalPages", totalPages);
 
-            return "tables/withoutId/measurment_list_clear";
+            return "tables/edit/measurment_list";
         }
         return "redirect:/login";
     }

@@ -1,4 +1,4 @@
-package com.example.webForDB.controllers;
+package com.example.webForDB.controllers.tableControllers;
 
 import com.example.webForDB.login.DBConnectHelper;
 import com.example.webForDB.models.Category;

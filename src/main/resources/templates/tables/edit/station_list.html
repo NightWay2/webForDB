@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category List</title>
+    <link rel="stylesheet" type="text/css" href="/css/tables.css">
+</head>
+<body>
+<h2>Stations</h2>
+
+<div class="navigation">
+    <form action="#" th:action="@{/choose_table}" method="get">
+        <button type="submit">Back to Choose Table</button>
+    </form>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID Station</th>
+        <th>City</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Coordinates</th>
+        <th>Server Url</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="station : ${stations}">
+        <td th:text="${station.id_station}"></td>
+        <td th:text="${station.city}"></td>
+        <td th:text="${station.name}"></td>
+        <td th:text="${station.status}"></td>
+        <td th:text="${station.coordinates}"></td>
+        <td th:text="${station.server_url}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,11 +1,11 @@
-package com.example.webForDB.models.modelsWithoutId;
+package com.example.webForDB.models.modelsEdit;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class MeasurementClear {
+public class MeasurementEdit {
     private String station_name;
     private String id_measurement;
     private String value;
