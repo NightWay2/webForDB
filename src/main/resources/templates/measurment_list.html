@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category List</title>
+    <link rel="stylesheet" type="text/css" href="/css/tables.css">
+</head>
+<body>
+    <h2>Measurement</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID Measurement</th>
+            <th>Time</th>
+            <th>Value</th>
+            <th>ID Station</th>
+            <th>ID Measurement Unit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="measurement : ${measurements}">
+            <td th:text="${measurement.id_measurement}"></td>
+            <td th:text="${measurement.time}"></td>
+            <td th:text="${measurement.value}"></td>
+            <td th:text="${measurement.id_station}"></td>
+            <td th:text="${measurement.id_measured_unit}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form action="#" th:action="@{/choose_table}" method="get">
+        <button type="submit">Back to Choose Table</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category List</title>
+    <link rel="stylesheet" type="text/css" href="/css/tables.css">
+</head>
+<body>
+    <h2>Categories</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID Category</th>
+            <th>Designation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category : ${categories}">
+            <td th:text="${category.id_category}"></td>
+            <td th:text="${category.designation}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form action="#" th:action="@{/choose_table}" method="get">
+        <button type="submit">Back to Choose Table</button>
+    </form>
+</body>
+</html>
