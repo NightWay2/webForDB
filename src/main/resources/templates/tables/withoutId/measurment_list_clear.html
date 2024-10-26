@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Measurement List</title>
+    <link rel="stylesheet" type="text/css" href="/css/tables.css">
+</head>
+<body>
+<h2>Measurement List (Page <span th:text="${currentPage}"></span>)</h2>
+
+<div class="navigation">
+    <form action="#" th:action="@{/choose_table}" method="get">
+        <button type="submit">Back to Choose Table</button>
+    </form>
+
+    <div class="pagination">
+        <a th:href="@{|/choose_table/measurment_list/${currentPage - 1}|}" th:if="${currentPage > 1}">&laquo; Previous</a>
+        <span>Page <span th:text="${currentPage}"></span> of <span th:text="${totalPages}"></span></span>
+        <a th:href="@{|/choose_table/measurment_list/${currentPage + 1}|}" th:if="${currentPage < totalPages}">Next &raquo;</a>
+    </div>
+
+    <div>
+        <label for="pageInput">Go to page:</label>
+        <input type="number" id="pageInput" min="1" max="${totalPages}" placeholder="Enter page number">
+        <button onclick="goToPage()">Go</button>
+    </div>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Station</th>
+        <th>ID Measurement</th>
+        <th>Value</th>
+        <th>Measured Unit</th>
+        <th>Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="measurement : ${measurements}">
+        <td th:text="${measurement.station_name}"></td>
+        <td th:text="${measurement.id_measurement}"></td>
+        <td th:text="${measurement.value}"></td>
+        <td th:text="${measurement.measured_unit_name}"></td>
+        <td th:text="${measurement.time}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<script src="/js/scripts.js"></script>
+</body>
+</html>

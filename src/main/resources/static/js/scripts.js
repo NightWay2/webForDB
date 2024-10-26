@@ -4,3 +4,8 @@ function clearError() {
         errorDiv.style.display = 'none';
     }
 }
+
+function goToPage() {
+            var pageNum = document.getElementById("pageInput").value;
+            window.location.href = '/choose_table/measurment_list/' + pageNum;
+}

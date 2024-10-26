@@ -1,6 +1,5 @@
 package com.example.webForDB.services;
 
-import com.example.webForDB.models.Measurement;
 import com.example.webForDB.models.modelsWithoutId.MeasurementClear;
 import com.example.webForDB.repositories.MeasurementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +16,20 @@ public class MeasurementService {
         this.measurementRepository = measurementRepository;
     }
 
-    public List<Measurement> findAllMeasurements() {
+    /*public List<Measurement> findAllMeasurements() { // todo del
         return measurementRepository.findAll();
     }
 
     public List<MeasurementClear> findAllClear() {
         return measurementRepository.findAllWithoutId();
+    }*/
+
+    public List<MeasurementClear> findMeasurementsWithPagination(int offset, int limit) {
+        return measurementRepository.findAllWithPagination(offset, limit);
     }
+
+    public int countAllMeasurements() {
+        return measurementRepository.countAll();
+    }
+
 }

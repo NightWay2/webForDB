@@ -7,24 +7,26 @@
     <link rel="stylesheet" href="/css/choose_table.css" />
 </head>
 <body>
-    <h2>Choose a Table</h2>
+<h2>Choose a Table</h2>
 
-    <div class="button-container">
-        <form action="#" th:action="@{choose_table/category_list}" method="get">
-            <button type="submit">Category List</button>
-        </form>
-
-        <form action="#" th:action="@{choose_table/measurment_list}" method="get">
-            <button type="submit">Measurement Table</button>
-        </form>
-
-        <form action="#" th:action="@{/one_more_table}" method="get">
-            <button type="submit">One More Table</button>
-        </form>
-    </div>
-
-    <form action="#" th:action="@{/login}" method="get">
-        <button type="submit">Back to Choose Table</button>
+<div class="button-container">
+    <form action="#" th:action="@{choose_table/category_list}" method="get">
+        <button type="submit">Category List</button>
     </form>
+
+    <form action="#" th:action="@{choose_table/measurment_list/1}" method="get">
+        <button type="submit">Measurement Table</button>
+    </form>
+
+    <form action="#" th:action="@{/one_more_table}" method="get">
+        <button type="submit">One More Table</button>
+    </form>
+</div>
+
+<div class="back-to-login">
+    <form action="#" th:action="@{/login}" method="get">
+        <button type="submit">Back to Login</button>
+    </form>
+</div>
 </body>
 </html>

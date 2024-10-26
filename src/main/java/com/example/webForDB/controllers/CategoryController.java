@@ -21,14 +21,12 @@ public class CategoryController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    //todo рефакторинг html
-
     @GetMapping("/choose_table/category_list")
     public String showCategoryList(Model model) {
         if (dbConnectHelper.checkConnection()) {
             List<Category> categories = categoryService.findAllCategories();
             model.addAttribute("categories", categories);
-            return "category_list";
+            return "tables/category_list";
         }
         return "redirect:/login";
     }
