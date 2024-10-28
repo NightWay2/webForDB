@@ -25,45 +25,6 @@ public class MeasurementController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    /*@GetMapping("/choose_table/measurment_list") // todo del
-    public String showCategoryList(Model model) {
-        if (dbConnectHelper.checkConnection()) {
-            List<Measurement> measurements = measurementService.findAllMeasurements();
-            model.addAttribute("measurements", measurements);
-            return "measurment_list";
-        }
-        return "redirect:/login";
-    }*/
-
-    /*@GetMapping("/choose_table/measurment_list")
-    public String showCategoryList(Model model) {
-        if (dbConnectHelper.checkConnection()) {
-            List<MeasurementClear> measurements = measurementService.findAllClear();
-            model.addAttribute("measurements", measurements);
-            return "withoutId/measurment_list_clear";
-        }
-        return "redirect:/login";
-    }*/
-
-    /*@GetMapping("/choose_table/measurment_list/{pageNum}")
-    public String showMeasurementList(@PathVariable("pageNum") int pageNum, Model model) {
-        if (dbConnectHelper.checkConnection()) {
-            int totalRecords = service.countAllMeasurements();
-            int totalPages = (int) Math.ceil((double) totalRecords / RECORDS_PER_PAGE);
-
-            int offset = (pageNum - 1) * RECORDS_PER_PAGE;
-
-            List<MeasurementEdit> measurements = service.findMeasurementsWithPagination(offset, RECORDS_PER_PAGE);
-
-            model.addAttribute("measurements", measurements);
-            model.addAttribute("currentPage", pageNum);
-            model.addAttribute("totalPages", totalPages);
-
-            return "tables/edit/measurment_list";
-        }
-        return "redirect:/login";
-    }*/
-
     @GetMapping("/choose_table/measurment_list/{pageNum}")
     public String showMeasurementList(@PathVariable("pageNum") int pageNum, Model model) {
         if (isMethodReady) {

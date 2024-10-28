@@ -16,14 +16,6 @@ public class MeasurementService {
         this.repository = repository;
     }
 
-    /*public List<Measurement> findAllMeasurements() { // todo del
-        return measurementRepository.findAll();
-    }
-
-    public List<MeasurementClear> findAllClear() {
-        return measurementRepository.findAllWithoutId();
-    }*/
-
     public List<MeasurementEdit> findMeasurementsWithPagination(int offset, int limit) {
         return repository.findAllWithPagination(offset, limit);
     }

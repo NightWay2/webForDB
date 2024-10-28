@@ -22,37 +22,6 @@ public class MeasurementRepository {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    /*public List<Measurement> findAll() { // todo del
-        List<Measurement> measurements = new ArrayList<>();
-        try {
-            if (dbConnectHelper.openConnection()) {
-                Connection connection = DBConnectHelper.getConnection();
-                String query = "select ID_Measurment, Time_, Value_, ID_Station, ID_Measured_Unit from measurment";
-
-                try (PreparedStatement preparedStatement = connection.prepareStatement(query);
-                     ResultSet resultSet = preparedStatement.executeQuery()) {
-                    while (resultSet.next()) {
-                        Measurement measurement = Measurement.builder()
-                                .id_measurement(resultSet.getString("ID_Measurment"))
-                                .time(resultSet.getString("Time_"))
-                                .value(resultSet.getString("Value_"))
-                                .id_station(resultSet.getString("ID_Station"))
-                                .id_measured_unit(resultSet.getString("ID_Measured_Unit"))
-                                .build();
-
-                        measurements.add(measurement);
-                    }
-                } catch (SQLException ignored) {
-                } finally {
-                    dbConnectHelper.closeConnection();
-                }
-            }
-        } catch (SQLException | ClassNotFoundException ignored) {
-        }
-
-        return measurements;
-    }*/
-
     public List<MeasurementEdit> findAllWithPagination(int offset, int limit) {
         List<MeasurementEdit> measurements = new ArrayList<>();
         try {

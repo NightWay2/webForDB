@@ -15,8 +15,6 @@ public class ChooseTableController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    //todo рефакторинг html
-
     @GetMapping("/choose_table")
     public String showChooseTable() {
         if (dbConnectHelper.checkConnection()) {
