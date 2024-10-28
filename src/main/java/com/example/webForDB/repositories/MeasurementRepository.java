@@ -62,7 +62,7 @@ public class MeasurementRepository {
                         "from measurment m, station s, measured_unit mu " +
                         "where s.id_station = m.id_station and " +
                         "mu.id_measured_unit = m.id_measured_unit " +
-                        "order by m.time_, m.id_measurment " +
+                        "order by m.time_ DESC, m.id_measurment " +
                         "limit ? offset ?";
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
