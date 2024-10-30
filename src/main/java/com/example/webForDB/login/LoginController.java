@@ -28,12 +28,6 @@ public class LoginController {
         String username = loginInfo.getUsername();
         String password = loginInfo.getPassword();
 
-        /*if (dbConnectHelper.openConnection(username, password)) {
-            model.addAttribute("error", "Success message");
-            dbConnectHelper.closeConnection();
-            return "login";
-        }*/
-
         try {
             if (dbConnectHelper.openConnection(username, password)) {
                 dbConnectHelper.closeConnection();
