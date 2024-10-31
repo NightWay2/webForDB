@@ -21,7 +21,7 @@ public class OptimalValueController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    @GetMapping("choose_table/optimal_value_list")
+    @GetMapping("choose_option/choose_table/optimal_value_list")
     public String showOptimalValueList(Model model) {
         if (dbConnectHelper.checkConnection()) {
             List<OptimalValueEdit> optimalValues = service.findAllOptimalValues();

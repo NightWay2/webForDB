@@ -21,7 +21,7 @@ public class FavoriteController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    @GetMapping("choose_table/favorite_list")
+    @GetMapping("choose_option/choose_table/favorite_list")
     public String showFavoriteList(Model model) {
         if (dbConnectHelper.checkConnection()) {
             List<FavoriteEdit> favorites = service.findAllFavorites();

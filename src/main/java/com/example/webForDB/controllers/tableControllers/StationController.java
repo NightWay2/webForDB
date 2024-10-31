@@ -21,7 +21,7 @@ public class StationController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    @GetMapping("choose_table/station_list")
+    @GetMapping("choose_option/choose_table/station_list")
     public String showStationList(Model model) {
         if (dbConnectHelper.checkConnection()) {
             List<StationEdit> stations = service.findAllStations();

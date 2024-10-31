@@ -4,49 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose Table</title>
-    <link rel="stylesheet" href="/css/choose_table.css" />
+    <link rel="stylesheet" href="/css/choose.css" />
 </head>
 <body>
-<h2>Choose a Table</h2>
+<div class="container">
+    <h2>Choose a Table</h2>
+    <div class="button-container">
+        <form action="#" th:action="@{choose_table/category_list}" method="get">
+            <button type="submit">Category List</button>
+        </form>
+        <form action="#" th:action="@{choose_table/measurment_list/1}" method="get">
+            <button type="submit">Measurement Table</button>
+        </form>
+        <form action="#" th:action="@{choose_table/station_list}" method="get">
+            <button type="submit">Station Table</button>
+        </form>
+        <form action="#" th:action="@{choose_table/favorite_list}" method="get">
+            <button type="submit">Favorite Table</button>
+        </form>
+        <form action="#" th:action="@{choose_table/measured_unit_list}" method="get">
+            <button type="submit">Measured Unit Table</button>
+        </form>
+        <form action="#" th:action="@{choose_table/mqtt_message_unit_list}" method="get">
+            <button type="submit">Mqtt Message Unit Table</button>
+        </form>
+        <form action="#" th:action="@{choose_table/mqtt_server_list}" method="get">
+            <button type="submit">Mqtt Server Table</button>
+        </form>
+        <form action="#" th:action="@{choose_table/optimal_value_list}" method="get">
+            <button type="submit">Optimal Value Table</button>
+        </form>
+    </div>
 
-<div class="button-container">
-    <form action="#" th:action="@{choose_table/category_list}" method="get">
-        <button type="submit">Category List</button>
-    </form>
-
-    <form action="#" th:action="@{choose_table/measurment_list/1}" method="get">
-        <button type="submit">Measurement Table</button>
-    </form>
-
-    <form action="#" th:action="@{choose_table/station_list}" method="get">
-        <button type="submit">Station Table</button>
-    </form>
-
-    <form action="#" th:action="@{choose_table/favorite_list}" method="get">
-        <button type="submit">Favorite Table</button>
-    </form>
-
-    <form action="#" th:action="@{choose_table/measured_unit_list}" method="get">
-        <button type="submit">Measured Unit Table</button>
-    </form>
-
-    <form action="#" th:action="@{choose_table/mqtt_message_unit_list}" method="get">
-        <button type="submit">Mqtt Message Unit Table</button>
-    </form>
-
-    <form action="#" th:action="@{choose_table/mqtt_server_list}" method="get">
-        <button type="submit">Mqtt Server Table</button>
-    </form>
-
-    <form action="#" th:action="@{choose_table/optimal_value_list}" method="get">
-        <button type="submit">Optimal Value Table</button>
-    </form>
-</div>
-
-<div class="back-to-login">
-    <form action="#" th:action="@{/login}" method="get">
-        <button type="submit">Back to Login</button>
-    </form>
+    <div class="back-to-login">
+        <form action="#" th:action="@{/choose_option}" method="get">
+            <button type="submit">Back to Options</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

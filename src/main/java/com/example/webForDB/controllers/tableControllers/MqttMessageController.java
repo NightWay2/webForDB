@@ -21,7 +21,7 @@ public class MqttMessageController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    @GetMapping("choose_table/mqtt_message_unit_list")
+    @GetMapping("choose_option/choose_table/mqtt_message_unit_list")
     public String showMqttMessageUnitList(Model model) {
         if (dbConnectHelper.checkConnection()) {
             List<MqttMessageUnitEdit> messageUnits = service.findAllMqttMessagesUnits();

@@ -7,5 +7,5 @@ function clearError() {
 
 function goToPage() {
             var pageNum = document.getElementById("pageInput").value;
-            window.location.href = '/choose_table/measurment_list/' + pageNum;
+            window.location.href = '/choose_option/choose_table/measurment_list/' + pageNum;
 }

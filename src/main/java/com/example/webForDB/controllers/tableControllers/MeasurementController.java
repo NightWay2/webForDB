@@ -25,7 +25,7 @@ public class MeasurementController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    @GetMapping("/choose_table/measurment_list/{pageNum}")
+    @GetMapping("choose_option/choose_table/measurment_list/{pageNum}")
     public String showMeasurementList(@PathVariable("pageNum") int pageNum, Model model) {
         if (isMethodReady) {
             isMethodReady = false;

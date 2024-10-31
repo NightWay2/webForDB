@@ -21,7 +21,7 @@ public class CategoryController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    @GetMapping("/choose_table/category_list")
+    @GetMapping("choose_option/choose_table/category_list")
     public String showCategoryList(Model model) {
         if (dbConnectHelper.checkConnection()) {
             List<Category> categories = service.findAllCategories();

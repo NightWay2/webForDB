@@ -9,14 +9,14 @@
 <h2>Measurement List (Page <span th:text="${currentPage}"></span>)</h2>
 
 <div class="navigation">
-    <form action="#" th:action="@{/choose_table}" method="get">
+    <form action="#" th:action="@{/choose_option/choose_table}" method="get">
         <button type="submit">Back to Choose Table</button>
     </form>
 
     <div class="pagination">
-        <a th:href="@{|/choose_table/measurment_list/${currentPage - 1}|}" th:if="${currentPage > 1}">&laquo; Previous</a>
+        <a th:href="@{|/choose_option/choose_table/measurment_list/${currentPage - 1}|}" th:if="${currentPage > 1}">&laquo; Previous</a>
         <span>Page <span th:text="${currentPage}"></span> of <span th:text="${totalPages}"></span></span>
-        <a th:href="@{|/choose_table/measurment_list/${currentPage + 1}|}" th:if="${currentPage < totalPages}">Next &raquo;</a>
+        <a th:href="@{|/choose_option/choose_table/measurment_list/${currentPage + 1}|}" th:if="${currentPage < totalPages}">Next &raquo;</a>
     </div>
 
     <div>

@@ -32,7 +32,7 @@ public class LoginController {
             if (dbConnectHelper.openConnection(username, password)) {
                 dbConnectHelper.closeConnection();
                 //model.addAttribute("error", "Success message");
-                return "redirect:/choose_table";
+                return "redirect:/choose_option";
             }
         } catch (Exception ignored) {
         }

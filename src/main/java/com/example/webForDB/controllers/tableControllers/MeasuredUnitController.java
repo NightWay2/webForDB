@@ -21,7 +21,7 @@ public class MeasuredUnitController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    @GetMapping("choose_table/measured_unit_list")
+    @GetMapping("choose_option/choose_table/measured_unit_list")
     public String showMeasuredUnitList(Model model) {
         if (dbConnectHelper.checkConnection()) {
             List<Measured_Unit> measured_units = service.findAllMeasuredUnits();

@@ -21,7 +21,7 @@ public class MqttServerController {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    @GetMapping("choose_table/mqtt_server_list")
+    @GetMapping("choose_option/choose_table/mqtt_server_list")
     public String showMqttServerList(Model model) {
         if (dbConnectHelper.checkConnection()) {
             List<MqttServer> mqttServers = service.findAllMqttServers();
