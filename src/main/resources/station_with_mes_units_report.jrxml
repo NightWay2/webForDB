@@ -1,0 +1,60 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="station_with_mes_units_report" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<field name="serverName" class="java.lang.String"/>
+	<field name="time" class="java.lang.String"/>
+	<field name="measuredUnits" class="java.lang.String"/>
+	<background/>
+	<title height="72">
+		<element kind="frame" uuid="330a6452-1d97-413b-8669-fa33d62cb6c5" mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699">
+			<element kind="staticText" uuid="8f35fef6-b67b-4a99-89a9-0a6b144a291e" x="20" y="20" width="544" height="43" forecolor="#FFFFFF" fontSize="34.0" bold="true">
+				<text><![CDATA[Station with measurement units]]></text>
+			</element>
+		</element>
+	</title>
+	<pageHeader height="13"/>
+	<columnHeader height="21">
+		<element kind="line" uuid="a17f7447-d489-4b68-bc82-2b3557bb421e" x="-20" y="20" width="595" height="1" forecolor="#666666"/>
+		<element kind="staticText" uuid="7ad61e1b-9f4f-4dbd-87cf-1bcecb37dec7" mode="Opaque" x="0" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" fontSize="14.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Server name]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34e1d1f7-0064-41a2-b550-01d7a97dd5ad"/>
+		</element>
+		<element kind="staticText" uuid="84eedd74-4dbc-467c-9ef8-ddb4a7128ce0" mode="Opaque" x="185" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" fontSize="14.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[First measurement]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e199dde5-f9a9-4479-b0c3-90873bc589ef"/>
+		</element>
+		<element kind="staticText" uuid="4df40e2b-1f60-4a86-a396-7ff057d9f27c" mode="Opaque" x="370" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" fontSize="14.0" bold="true" hTextAlign="Center">
+			<text><![CDATA[Measured units]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5ada7de7-29fd-476e-bc5e-1fade3ab4ab5"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<element kind="line" uuid="3463c89e-1083-4314-b877-c5ddce84992f" positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1"/>
+			<element kind="textField" uuid="6fb73e96-3d82-4536-a8a7-8bd12efe5a39" x="0" y="0" width="185" height="20" fontSize="14.0">
+				<expression><![CDATA[$F{serverName}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="34e1d1f7-0064-41a2-b550-01d7a97dd5ad"/>
+			</element>
+			<element kind="textField" uuid="7c4899ad-9dce-4e44-b843-b4d5803a5329" x="185" y="0" width="185" height="20" fontSize="14.0">
+				<expression><![CDATA[$F{time}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e199dde5-f9a9-4479-b0c3-90873bc589ef"/>
+			</element>
+			<element kind="textField" uuid="1cec8d21-9f29-495e-b870-bfb39afce4f9" x="370" y="0" width="185" height="20" fontSize="14.0">
+				<expression><![CDATA[$F{measuredUnits}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5ada7de7-29fd-476e-bc5e-1fade3ab4ab5"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter/>
+	<pageFooter height="17">
+		<element kind="textField" uuid="a99e7b6e-2ed2-42d6-b6a6-3b7e5cb568d3" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" hTextAlign="Right">
+			<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
+		</element>
+		<element kind="textField" uuid="b8961a7f-4d70-4cce-a33b-6ba7712a5b78" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" evaluationTime="Report">
+			<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="b607e986-cac8-4889-97d4-176f3f2aa4a0" x="0" y="4" width="100" height="13" pattern="EEEEE dd MMMMM yyyy">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+	</pageFooter>
+	<summary/>
+</jasperReport>

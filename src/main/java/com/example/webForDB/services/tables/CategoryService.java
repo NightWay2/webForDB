@@ -1,7 +1,7 @@
-package com.example.webForDB.services;
+package com.example.webForDB.services.tables;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.modelsEdit.MqttMessageUnitEdit;
+import com.example.webForDB.models.tables.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,34 +13,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MqttMessageUnitService {
+public class CategoryService {
     private DBConnectHelper dbConnectHelper;
 
     @Autowired
-    public MqttMessageUnitService(DBConnectHelper dbConnectHelper) {
+    public CategoryService(DBConnectHelper dbConnectHelper) {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    public List<MqttMessageUnitEdit> findAllMqttMessagesUnits() {
-        List<MqttMessageUnitEdit> mqttMessageUnits = new ArrayList<>();
+    public List<Category> findAllCategories() {
+        List<Category> categories = new ArrayList<>();
         try {
             if (dbConnectHelper.openConnection()) {
                 Connection connection = DBConnectHelper.getConnection();
-                String query = "select s.name_, mu.title, mmu.message_, mmu.order_ " +
-                        "from station s, measured_unit mu, mqtt_message_unit mmu " +
-                        "where s.id_station = mmu.id_station and mu.id_measured_unit = mmu.id_measured_unit";
+                String query = "select ID_Category, Designation from category";
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                      ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
-                        MqttMessageUnitEdit mqttMessageUnit = MqttMessageUnitEdit.builder()
-                                .station_name(resultSet.getString("name_"))
-                                .measured_unit_title(resultSet.getString("title"))
-                                .message(resultSet.getString("message_"))
-                                .order(resultSet.getString("order_"))
+                        Category category = Category.builder()
+                                .id_category(resultSet.getString("ID_Category"))
+                                .designation(resultSet.getString("Designation"))
                                 .build();
 
-                        mqttMessageUnits.add(mqttMessageUnit);
+                        categories.add(category);
                     }
                 } catch (SQLException ignored) {
                 } finally {
@@ -50,6 +46,6 @@ public class MqttMessageUnitService {
         } catch (SQLException | ClassNotFoundException ignored) {
         }
 
-        return mqttMessageUnits;
+        return categories;
     }
 }

@@ -1,7 +1,7 @@
-package com.example.webForDB.services;
+package com.example.webForDB.services.tables;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.modelsEdit.FavoriteEdit;
+import com.example.webForDB.models.tables.modelsEdit.StationEdit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,32 +13,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class FavoriteService {
+public class StationService {
     private DBConnectHelper dbConnectHelper;
 
     @Autowired
-    public FavoriteService(DBConnectHelper dbConnectHelper) {
+    public StationService(DBConnectHelper dbConnectHelper) {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    public List<FavoriteEdit> findAllFavorites() {
-        List<FavoriteEdit> favorites = new ArrayList<>();
+    public List<StationEdit> findAllStations() {
+        List<StationEdit> stations = new ArrayList<>();
         try {
             if (dbConnectHelper.openConnection()) {
                 Connection connection = DBConnectHelper.getConnection();
-                String query = "select f.user_name, s.name_, s.coordinates from favorite f, station s " +
-                        "where s.id_station = f.id_station";
+                String query = "select s.id_station, s.city, s.name_, s.status, s.coordinates, ms.url " +
+                        "from station s, mqtt_server ms where s.id_server = ms.id_server";
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                      ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
-                        FavoriteEdit favorite = FavoriteEdit.builder()
-                                .user_name(resultSet.getString("user_name"))
-                                .station_name(resultSet.getString("name_"))
-                                .station_coordinates(resultSet.getString("coordinates"))
+                        StationEdit station = StationEdit.builder()
+                                .id_station(resultSet.getString("id_station"))
+                                .city(resultSet.getString("city"))
+                                .name(resultSet.getString("name_"))
+                                .status(resultSet.getString("status"))
+                                .coordinates(resultSet.getString("coordinates"))
+                                .server_url(resultSet.getString("url"))
                                 .build();
 
-                        favorites.add(favorite);
+                        stations.add(station);
                     }
                 } catch (SQLException ignored) {
                 } finally {
@@ -48,6 +51,6 @@ public class FavoriteService {
         } catch (SQLException | ClassNotFoundException ignored) {
         }
 
-        return favorites;
+        return stations;
     }
 }

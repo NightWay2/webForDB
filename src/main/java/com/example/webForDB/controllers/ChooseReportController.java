@@ -6,18 +6,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ChooseTableController {
+public class ChooseReportController {
     private DBConnectHelper dbConnectHelper;
 
     @Autowired
-    public ChooseTableController(DBConnectHelper dbConnectHelper) {
+    public ChooseReportController(DBConnectHelper dbConnectHelper) {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    @GetMapping("choose_option/choose_table")
-    public String showChooseTable() {
+    @GetMapping("choose_option/choose_report")
+    public String showChooseReport() {
         if (dbConnectHelper.checkConnection()) {
-            return "choose_table";
+            return "choose_report";
         }
         return "redirect:/login";
     }

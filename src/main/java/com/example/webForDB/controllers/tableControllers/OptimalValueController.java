@@ -1,8 +1,8 @@
 package com.example.webForDB.controllers.tableControllers;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.modelsEdit.OptimalValueEdit;
-import com.example.webForDB.services.OptimalValueService;
+import com.example.webForDB.models.tables.modelsEdit.OptimalValueEdit;
+import com.example.webForDB.services.tables.OptimalValueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

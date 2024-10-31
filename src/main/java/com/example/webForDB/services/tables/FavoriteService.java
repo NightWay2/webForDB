@@ -1,7 +1,7 @@
-package com.example.webForDB.services;
+package com.example.webForDB.services.tables;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.Category;
+import com.example.webForDB.models.tables.modelsEdit.FavoriteEdit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,30 +13,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CategoryService {
+public class FavoriteService {
     private DBConnectHelper dbConnectHelper;
 
     @Autowired
-    public CategoryService(DBConnectHelper dbConnectHelper) {
+    public FavoriteService(DBConnectHelper dbConnectHelper) {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    public List<Category> findAllCategories() {
-        List<Category> categories = new ArrayList<>();
+    public List<FavoriteEdit> findAllFavorites() {
+        List<FavoriteEdit> favorites = new ArrayList<>();
         try {
             if (dbConnectHelper.openConnection()) {
                 Connection connection = DBConnectHelper.getConnection();
-                String query = "select ID_Category, Designation from category";
+                String query = "select f.user_name, s.name_, s.coordinates from favorite f, station s " +
+                        "where s.id_station = f.id_station";
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                      ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
-                        Category category = Category.builder()
-                                .id_category(resultSet.getString("ID_Category"))
-                                .designation(resultSet.getString("Designation"))
+                        FavoriteEdit favorite = FavoriteEdit.builder()
+                                .user_name(resultSet.getString("user_name"))
+                                .station_name(resultSet.getString("name_"))
+                                .station_coordinates(resultSet.getString("coordinates"))
                                 .build();
 
-                        categories.add(category);
+                        favorites.add(favorite);
                     }
                 } catch (SQLException ignored) {
                 } finally {
@@ -46,6 +48,6 @@ public class CategoryService {
         } catch (SQLException | ClassNotFoundException ignored) {
         }
 
-        return categories;
+        return favorites;
     }
 }

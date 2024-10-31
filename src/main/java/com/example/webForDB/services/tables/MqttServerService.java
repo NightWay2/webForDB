@@ -1,7 +1,7 @@
-package com.example.webForDB.services;
+package com.example.webForDB.services.tables;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.Measured_Unit;
+import com.example.webForDB.models.tables.MqttServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,31 +13,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MeasuredUnitService {
+public class MqttServerService {
     private DBConnectHelper dbConnectHelper;
 
     @Autowired
-    public MeasuredUnitService(DBConnectHelper dbConnectHelper) {
+    public MqttServerService(DBConnectHelper dbConnectHelper) {
         this.dbConnectHelper = dbConnectHelper;
     }
 
-    public List<Measured_Unit> findAllMeasuredUnits() {
-        List<Measured_Unit> measuredUnits = new ArrayList<>();
+    public List<MqttServer> findAllMqttServers() {
+        List<MqttServer> mqttServers = new ArrayList<>();
         try {
             if (dbConnectHelper.openConnection()) {
                 Connection connection = DBConnectHelper.getConnection();
-                String query = "select * from measured_unit";
+                String query = "select * from mqtt_server";
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                      ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
-                        Measured_Unit measuredUnit = Measured_Unit.builder()
-                                .id_measured_unit(resultSet.getString("id_measured_unit"))
-                                .title(resultSet.getString("title"))
-                                .unit(resultSet.getString("unit"))
+                        MqttServer mqttServer = MqttServer.builder()
+                                .id_server(resultSet.getString("id_server"))
+                                .url(resultSet.getString("url"))
+                                .status(resultSet.getString("status"))
                                 .build();
 
-                        measuredUnits.add(measuredUnit);
+                        mqttServers.add(mqttServer);
                     }
                 } catch (SQLException ignored) {
                 } finally {
@@ -47,6 +47,6 @@ public class MeasuredUnitService {
         } catch (SQLException | ClassNotFoundException ignored) {
         }
 
-        return measuredUnits;
+        return mqttServers;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.webForDB.models;
+package com.example.webForDB.models.tables;
 
 import lombok.Builder;
 import lombok.Data;
