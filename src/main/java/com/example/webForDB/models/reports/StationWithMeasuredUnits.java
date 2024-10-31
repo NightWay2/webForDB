@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class StationWithMeasuredUnits {
-    private String serverName;
+    private String stationName;
     private String time;
     private String measuredUnits;
 }
