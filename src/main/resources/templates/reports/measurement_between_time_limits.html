@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement Report</title>
+    <link rel="stylesheet" href="/css/report.css">
+</head>
+<body>
+<div class="container">
+    <h2>Measurement Report by Station and Time</h2>
+
+    <form action="/choose_option/choose_report/measurement_between_time_limits_report" method="post">
+        <label for="station">Select Station:</label>
+        <select id="station" name="station" required>
+            <option value="" disabled selected>Select a Station</option>
+            <option th:each="station : ${stations}" th:value="${station.id}" th:text="${station.name}">Station Name</option>
+        </select>
+
+        <label for="startTime">Start Time:</label>
+        <input type="datetime-local" id="startTime" name="startTime" required>
+
+        <label for="endTime">End Time:</label>
+        <input type="datetime-local" id="endTime" name="endTime" required>
+
+        <button type="submit">Generate Report</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,6 +1,5 @@
 package com.example.webForDB.controllers.reports;
 
-import com.example.webForDB.models.reports.StationWithMeasuredUnits;
 import com.example.webForDB.services.reports.StationWithMeasuredUnitsService;
 import jakarta.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
@@ -12,7 +11,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @RestController
 public class StationWithMeasuredUnitsController {
@@ -23,12 +21,18 @@ public class StationWithMeasuredUnitsController {
         this.service = service;
     }
 
-    @GetMapping("/choose_option/choose_report/report")
-    public List<StationWithMeasuredUnits> findAllFields() {
-        return service.findAllFields();
+    @GetMapping("/choose_option/choose_report/station_with_measured_units_report")
+    public void showPdf(HttpServletResponse response) throws JRException, IOException {
+        response.setContentType("application/pdf");
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "inline; filename=report.pdf";
+        response.setHeader(headerKey, headerValue);
+
+        service.exportJasperReport(response);
     }
 
-    @GetMapping("/choose_option/choose_report/report/export")
+    @GetMapping("/choose_option/choose_report/station_with_measured_units_report/export")
     public void createPdf(HttpServletResponse response) throws JRException, IOException {
         response.setContentType("application/pdf");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");

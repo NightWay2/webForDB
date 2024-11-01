@@ -68,18 +68,6 @@ public class StationWithMeasuredUnitsService {
         return fields;
     }
 
-    /*public void exportJasperReport(HttpServletResponse response) throws IOException, JRException {
-        List<StationWithMeasuredUnits> fields = findAllFields();
-
-        File file = ResourceUtils.getFile("classpath:station_with_mes_units_report.jrxml");
-        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(fields);
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("createdBy", "Maksym Zakomirnyi");
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-        JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
-    }*/
-
     public void exportJasperReport(HttpServletResponse response) throws IOException, JRException {
         List<StationWithMeasuredUnits> fields = findAllFields();
 
