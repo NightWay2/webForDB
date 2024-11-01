@@ -2,14 +2,22 @@ package com.example.webForDB.services.reports;
 
 import com.example.webForDB.login.DBConnectHelper;
 import com.example.webForDB.models.reports.MeasurementBetweenTimeLimits;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.Builder;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class MeasurementBetweenTimeLimitsService {
@@ -129,5 +137,31 @@ public class MeasurementBetweenTimeLimitsService {
         }
 
         return fields;
+    }
+
+    public void exportJasperReport(HttpServletResponse response, String stationId, String startTime,
+                                   String endTime) throws IOException, JRException {
+
+        LocalDateTime startDateTime = LocalDateTime.parse(startTime);
+        LocalDateTime endDateTime = LocalDateTime.parse(endTime);
+
+        String parameterStartTime = startTime.substring(0, startTime.indexOf("T")) + " " +
+                startTime.substring(startTime.indexOf("T") + 1);
+        String parameterEndTime = endTime.substring(0, endTime.indexOf("T")) + " " +
+                endTime.substring(endTime.indexOf("T") + 1);
+
+        List<MeasurementBetweenTimeLimits> fields = findAllFields(stationId, startDateTime, endDateTime);
+
+        String stationName = findStationNameById(stationId);
+
+        File file = ResourceUtils.getFile("classpath:measurement_by_station_and_time_report.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(fields);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("stationName", stationName);
+        parameters.put("startTime", parameterStartTime);
+        parameters.put("endTime", parameterEndTime);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
     }
 }
