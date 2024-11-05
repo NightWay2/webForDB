@@ -4,15 +4,16 @@ import com.example.webForDB.services.reports.StationWithMeasuredUnitsService;
 import jakarta.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@RestController
+@Controller
 public class StationWithMeasuredUnitsController {
     private StationWithMeasuredUnitsService service;
 
@@ -21,6 +22,7 @@ public class StationWithMeasuredUnitsController {
         this.service = service;
     }
 
+    @ResponseBody
     @GetMapping("/choose_option/choose_report/station_with_measured_units_report")
     public void showPdf(HttpServletResponse response) throws JRException, IOException {
         response.setContentType("application/pdf");
@@ -32,6 +34,7 @@ public class StationWithMeasuredUnitsController {
         service.exportJasperReport(response);
     }
 
+    @ResponseBody
     @GetMapping("/choose_option/choose_report/station_with_measured_units_report/export")
     public void createPdf(HttpServletResponse response) throws JRException, IOException {
         response.setContentType("application/pdf");
@@ -43,5 +46,10 @@ public class StationWithMeasuredUnitsController {
         response.setHeader(headerKey, headerValue);
 
         service.exportJasperReport(response);
+    }
+
+    @GetMapping("/choose_option/choose_report/station_with_measured_units_powerbi_report")
+    public String getPowerBiView1() {
+        return "reports/powerbi_view1";
     }
 }

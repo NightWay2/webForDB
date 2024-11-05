@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Світлий фон для тла */
+    margin: 0;
+    height: 100vh; /* Висота на 100% */
+}
+
+h2 {
+    color: #333; /* Темний текст заголовка */
+    margin: 20px 0; /* Відступи для заголовка */
+    text-align: center; /* Центрування заголовка */
+}
+
+.navigation {
+    position: fixed; /* Фіксоване позиціонування для кнопки */
+    top: 10px; /* Верхній відступ */
+    left: 10px; /* Лівий відступ */
+}
+
+.navigation button {
+    background-color: #4CAF50; /* Зелений фон для кнопки */
+    color: white; /* Білий текст на кнопці */
+    border: none; /* Без рамки */
+    border-radius: 4px; /* Закруглені кути */
+    padding: 10px 15px; /* Внутрішні відступи для кнопки */
+    cursor: pointer; /* Показує, що кнопка є натискабельною */
+    transition: background-color 0.3s; /* Ефект переходу для фону */
+}
+
+.navigation button:hover {
+    background-color: #45a049; /* Темніший зелений фон при наведенні */
+}
+
+.container {
+    display: flex; /* Відображення у флекс-форматі */
+    justify-content: center; /* Вирівнювання вмісту по центру */
+    align-items: center; /* Вирівнювання вмісту по вертикалі */
+    height: calc(100vh - 60px); /* Висота контейнера з урахуванням висоти навігації */
+    margin-top: 60px; /* Відступ зверху, щоб уникнути перекриття з навігацією */
+}
+
+iframe {
+    border: none; /* Без рамки для iframe */
+    width: 100%; /* Ширина на 100% */
+    height: 100%; /* Висота на 100% */
+}

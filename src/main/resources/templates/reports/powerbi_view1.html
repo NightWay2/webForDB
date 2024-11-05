@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI report 1</title>
+    <link rel="stylesheet" href="/css/powerbi_report.css">
+</head>
+<body>
+<h2>Stations with Measured Units (Power BI)</h2>
+<div class="navigation">
+    <form action="#" th:action="@{/choose_option/choose_report}" method="get">
+        <button type="submit">Back to Choose Table</button>
+    </form>
+</div>
+
+<div class="container">
+    <iframe title="powerBiView1"
+            src="https://app.powerbi.com/view?r=eyJrIjoiYmRkOTA0YmItNTA1ZS00NjdkLTkyY2QtNmJiNDgxNjQ1NWZkIiwidCI6ImQ2NTk5ZjY4LTJkMmMtNGNhZS05ZWNmLTYwMDUyYjdkMGJkOSIsImMiOjl9"
+            frameborder="0" allowFullScreen="true">
+    </iframe>
+</div>
+</body>
+</html>
