@@ -34,17 +34,7 @@ public class StationWithMeasuredUnitsService {
         try {
             if (dbConnectHelper.openConnection()) {
                 Connection connection = DBConnectHelper.getConnection();
-                String query = "WITH Station_spec AS (" +
-                        "SELECT Station.name_ as name_, MIN(Measurment.time_) as time_, Measured_unit.title as title " +
-                        "FROM Measured_unit " +
-                        "INNER JOIN Measurment ON Measured_unit.id_measured_unit = Measurment.id_measured_unit " +
-                        "INNER JOIN Station ON Measurment.id_station = Station.id_station " +
-                        "GROUP BY name_, title" +
-                        ") " +
-                        "SELECT name_, MIN(time_), STRING_AGG(title, ', ') " +
-                        "FROM Station_spec " +
-                        "GROUP BY name_ " +
-                        "ORDER BY name_;";
+                String query = "select * from StationWithMeasuredUnits";
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                      ResultSet resultSet = preparedStatement.executeQuery()) {
