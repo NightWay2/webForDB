@@ -16,9 +16,9 @@ public class ChooseReportController {
 
     @GetMapping("choose_option/choose_report")
     public String showChooseReport() {
-        if (dbConnectHelper.checkConnection()) {
-            return "choose_report";
+        if (!dbConnectHelper.checkConnection()) {
+            return "redirect:/login";
         }
-        return "redirect:/login";
+        return "choose_report";
     }
 }

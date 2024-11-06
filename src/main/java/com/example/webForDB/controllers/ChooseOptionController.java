@@ -16,9 +16,9 @@ public class ChooseOptionController {
 
     @GetMapping("/choose_option")
     public String showChooseOption() {
-        if (dbConnectHelper.checkConnection()) {
-            return "choose_option";
+        if (!dbConnectHelper.checkConnection()) {
+            return "redirect:/login";
         }
-        return "redirect:/login";
+        return "choose_option";
     }
 }

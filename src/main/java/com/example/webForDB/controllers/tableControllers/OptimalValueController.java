@@ -23,12 +23,11 @@ public class OptimalValueController {
 
     @GetMapping("choose_option/choose_table/optimal_value_list")
     public String showOptimalValueList(Model model) {
-        if (dbConnectHelper.checkConnection()) {
-            List<OptimalValueEdit> optimalValues = service.findAllOptimalValues();
-            model.addAttribute("optimalValues", optimalValues);
-            return "tables/edit/optimal_value_list";
+        if (!dbConnectHelper.checkConnection()) {
+            return "redirect:/login";
         }
-
-        return "redirect:/login";
+        List<OptimalValueEdit> optimalValues = service.findAllOptimalValues();
+        model.addAttribute("optimalValues", optimalValues);
+        return "tables/edit/optimal_value_list";
     }
 }

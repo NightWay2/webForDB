@@ -23,12 +23,11 @@ public class MqttServerController {
 
     @GetMapping("choose_option/choose_table/mqtt_server_list")
     public String showMqttServerList(Model model) {
-        if (dbConnectHelper.checkConnection()) {
-            List<MqttServer> mqttServers = service.findAllMqttServers();
-            model.addAttribute("mqttServers", mqttServers);
-            return "tables/mqtt_server_list";
+        if (!dbConnectHelper.checkConnection()) {
+            return "redirect:/login";
         }
-
-        return "redirect:/login";
+        List<MqttServer> mqttServers = service.findAllMqttServers();
+        model.addAttribute("mqttServers", mqttServers);
+        return "tables/mqtt_server_list";
     }
 }

@@ -23,12 +23,11 @@ public class FavoriteController {
 
     @GetMapping("choose_option/choose_table/favorite_list")
     public String showFavoriteList(Model model) {
-        if (dbConnectHelper.checkConnection()) {
-            List<FavoriteEdit> favorites = service.findAllFavorites();
-            model.addAttribute("favorites", favorites);
-            return "tables/edit/favorite_list";
+        if (!dbConnectHelper.checkConnection()) {
+            return "redirect:/login";
         }
-
-        return "redirect:/login";
+        List<FavoriteEdit> favorites = service.findAllFavorites();
+        model.addAttribute("favorites", favorites);
+        return "tables/edit/favorite_list";
     }
 }

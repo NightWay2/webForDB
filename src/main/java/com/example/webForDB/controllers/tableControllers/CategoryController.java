@@ -23,11 +23,11 @@ public class CategoryController {
 
     @GetMapping("choose_option/choose_table/category_list")
     public String showCategoryList(Model model) {
-        if (dbConnectHelper.checkConnection()) {
-            List<Category> categories = service.findAllCategories();
-            model.addAttribute("categories", categories);
-            return "tables/category_list";
+        if (!dbConnectHelper.checkConnection()) {
+            return "redirect:/login";
         }
-        return "redirect:/login";
+        List<Category> categories = service.findAllCategories();
+        model.addAttribute("categories", categories);
+        return "tables/category_list";
     }
 }

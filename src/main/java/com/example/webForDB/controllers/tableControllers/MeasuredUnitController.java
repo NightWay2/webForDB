@@ -23,12 +23,12 @@ public class MeasuredUnitController {
 
     @GetMapping("choose_option/choose_table/measured_unit_list")
     public String showMeasuredUnitList(Model model) {
-        if (dbConnectHelper.checkConnection()) {
-            List<Measured_Unit> measured_units = service.findAllMeasuredUnits();
-            model.addAttribute("measured_units", measured_units);
-            return "tables/measured_unit_list";
+        if (!dbConnectHelper.checkConnection()) {
+            return "redirect:/login";
         }
+        List<Measured_Unit> measured_units = service.findAllMeasuredUnits();
+        model.addAttribute("measured_units", measured_units);
+        return "tables/measured_unit_list";
 
-        return "redirect:/login";
     }
 }

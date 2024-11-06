@@ -23,12 +23,12 @@ public class MqttMessageController {
 
     @GetMapping("choose_option/choose_table/mqtt_message_unit_list")
     public String showMqttMessageUnitList(Model model) {
-        if (dbConnectHelper.checkConnection()) {
-            List<MqttMessageUnitEdit> messageUnits = service.findAllMqttMessagesUnits();
-            model.addAttribute("messageUnits", messageUnits);
-            return "tables/edit/mqtt_message_unit_list";
+        if (!dbConnectHelper.checkConnection()) {
+            return "redirect:/login";
         }
+        List<MqttMessageUnitEdit> messageUnits = service.findAllMqttMessagesUnits();
+        model.addAttribute("messageUnits", messageUnits);
+        return "tables/edit/mqtt_message_unit_list";
 
-        return "redirect:/login";
     }
 }

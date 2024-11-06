@@ -23,12 +23,11 @@ public class StationController {
 
     @GetMapping("choose_option/choose_table/station_list")
     public String showStationList(Model model) {
-        if (dbConnectHelper.checkConnection()) {
-            List<StationEdit> stations = service.findAllStations();
-            model.addAttribute("stations", stations);
-            return "tables/edit/station_list";
+        if (!dbConnectHelper.checkConnection()) {
+            return "redirect:/login";
         }
-
-        return "redirect:/login";
+        List<StationEdit> stations = service.findAllStations();
+        model.addAttribute("stations", stations);
+        return "tables/edit/station_list";
     }
 }
