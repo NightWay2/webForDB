@@ -1,7 +1,7 @@
 package com.example.webForDB.services.tables;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.tables.modelsEdit.StationEdit;
+import com.example.webForDB.models.tables.StationEdit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

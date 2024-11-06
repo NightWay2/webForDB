@@ -1,7 +1,7 @@
 package com.example.webForDB.controllers.tableControllers;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.tables.modelsEdit.OptimalValueEdit;
+import com.example.webForDB.models.tables.OptimalValueEdit;
 import com.example.webForDB.services.tables.OptimalValueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +28,6 @@ public class OptimalValueController {
         }
         List<OptimalValueEdit> optimalValues = service.findAllOptimalValues();
         model.addAttribute("optimalValues", optimalValues);
-        return "tables/edit/optimal_value_list";
+        return "tables/optimal_value_list";
     }
 }

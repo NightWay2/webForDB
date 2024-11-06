@@ -1,7 +1,7 @@
 package com.example.webForDB.controllers.tableControllers;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.tables.modelsEdit.FavoriteEdit;
+import com.example.webForDB.models.tables.FavoriteEdit;
 import com.example.webForDB.services.tables.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +28,6 @@ public class FavoriteController {
         }
         List<FavoriteEdit> favorites = service.findAllFavorites();
         model.addAttribute("favorites", favorites);
-        return "tables/edit/favorite_list";
+        return "tables/favorite_list";
     }
 }

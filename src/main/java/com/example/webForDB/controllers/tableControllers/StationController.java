@@ -1,7 +1,7 @@
 package com.example.webForDB.controllers.tableControllers;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.tables.modelsEdit.StationEdit;
+import com.example.webForDB.models.tables.StationEdit;
 import com.example.webForDB.services.tables.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +28,6 @@ public class StationController {
         }
         List<StationEdit> stations = service.findAllStations();
         model.addAttribute("stations", stations);
-        return "tables/edit/station_list";
+        return "tables/station_list";
     }
 }

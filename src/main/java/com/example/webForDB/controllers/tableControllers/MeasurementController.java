@@ -1,7 +1,7 @@
 package com.example.webForDB.controllers.tableControllers;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.tables.modelsEdit.MeasurementEdit;
+import com.example.webForDB.models.tables.MeasurementEdit;
 import com.example.webForDB.services.tables.MeasurementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,7 +42,7 @@ public class MeasurementController {
                 model.addAttribute("totalPages", totalPages);
 
                 isMethodReady = true;
-                return "tables/edit/measurment_list";
+                return "tables/measurment_list";
             }
             isMethodReady = true;
             return "redirect:/login";

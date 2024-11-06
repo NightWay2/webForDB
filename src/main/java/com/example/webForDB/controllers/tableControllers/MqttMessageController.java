@@ -1,7 +1,7 @@
 package com.example.webForDB.controllers.tableControllers;
 
 import com.example.webForDB.login.DBConnectHelper;
-import com.example.webForDB.models.tables.modelsEdit.MqttMessageUnitEdit;
+import com.example.webForDB.models.tables.MqttMessageUnitEdit;
 import com.example.webForDB.services.tables.MqttMessageUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ public class MqttMessageController {
         }
         List<MqttMessageUnitEdit> messageUnits = service.findAllMqttMessagesUnits();
         model.addAttribute("messageUnits", messageUnits);
-        return "tables/edit/mqtt_message_unit_list";
+        return "tables/mqtt_message_unit_list";
 
     }
 }
