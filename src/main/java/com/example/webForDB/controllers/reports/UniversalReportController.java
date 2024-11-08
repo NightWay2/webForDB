@@ -96,4 +96,28 @@ public class UniversalReportController {
 
         service.exportJasperReport3(response, stationId);
     }
+
+    @GetMapping("/choose_option/choose_report/report4")
+    public String showFormForReport4(Model model) {
+        if (dbConnectHelper.checkConnection()) {
+            model.addAttribute("stations", service.findAllStationsForReport(4));
+            return "reports/report4";
+        }
+
+        return "redirect:/login";
+    }
+
+    @ResponseBody
+    @PostMapping("/choose_option/choose_report/report4/view")
+    public void showPdf4(@RequestParam("station") String stationId, HttpServletResponse response)
+            throws IOException, JRException {
+
+        response.setContentType("application/pdf");
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "inline; filename=report.pdf";
+        response.setHeader(headerKey, headerValue);
+
+        service.exportJasperReport4(response, stationId);
+    }
 }

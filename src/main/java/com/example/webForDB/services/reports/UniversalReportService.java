@@ -46,7 +46,7 @@ public class UniversalReportService {
                     while (resultSet.next()) {
                         UniversalReportModel params = switch (typeOfModel) {
                             case 1 -> new Report1Model();
-                            case 2, 3, 4 -> new Report234Model(); // todo
+                            case 2, 3, 4 -> new Report234Model();
                             default -> null;
                         };
 
@@ -190,6 +190,26 @@ public class UniversalReportService {
         String stationName = findStationNameById(stationId);
 
         File file = ResourceUtils.getFile("classpath:report3.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(fields);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("stationName", stationName);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
+    }
+
+    // using only for report4
+    public void exportJasperReport4(HttpServletResponse response, String stationId) // todo change if need
+            throws IOException, JRException {
+
+        List<UniversalReportModel> fields = findAllParams(
+                "select category, count_of " +
+                        "from report4 where id_station = '" + stationId + "' " +
+                        "group by category, count_of", 4, 2);
+
+        String stationName = findStationNameById(stationId);
+
+        File file = ResourceUtils.getFile("classpath:report4.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(fields);
         Map<String, Object> parameters = new HashMap<>();
