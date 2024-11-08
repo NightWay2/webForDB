@@ -8,6 +8,6 @@ class WebForDbApplicationTests {
 
 	@Test
 	void contextLoads() {
-	}
 
+	}
 }

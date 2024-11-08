@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report 2</title>
+    <link rel="stylesheet" href="/css/report.css">
+</head>
+<body>
+<div class="container">
+    <h2>Report2</h2>
+
+    <form action="/choose_option/choose_report/report2/view" method="post">
+        <label for="station">Select Station:</label>
+        <select id="station" name="station" required>
+            <option value="" disabled selected>Select a Station</option>
+            <option th:each="station : ${stations}" th:value="${station.id}" th:text="${station.name}">Station Name</option>
+        </select>
+
+        <button type="submit">Generate Report</button>
+    </form>
+
+    <div class="navigation">
+        <form action="#" th:action="@{/choose_option/choose_report}" method="get">
+            <button type="submit">Back to Choose Report</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

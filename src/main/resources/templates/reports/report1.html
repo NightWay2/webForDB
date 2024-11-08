@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report 1</title>
+    <link rel="stylesheet" href="/css/report.css">
+</head>
+<body>
+<div class="container">
+    <h2>Report1</h2>
+
+    <form action="/choose_option/choose_report/report1/view" method="post">
+        <label for="startTime">Start Time:</label>
+        <input type="datetime-local" id="startTime" name="startTime" required>
+
+        <label for="endTime">End Time:</label>
+        <input type="datetime-local" id="endTime" name="endTime" required>
+
+        <button type="submit">Generate Report</button>
+    </form>
+
+    <div class="navigation">
+        <form action="#" th:action="@{/choose_option/choose_report}" method="get">
+            <button type="submit">Back to Choose Report</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
