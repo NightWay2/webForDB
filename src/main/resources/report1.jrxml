@@ -11,7 +11,7 @@
 		<band/>
 	</background>
 	<title>
-		<band height="293">
+		<band height="406">
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="37256cdb-7544-45c0-8a77-b63bff734784"/>
 				<staticText>
@@ -58,7 +58,7 @@
 			</frame>
 			<barChart>
 				<chart evaluationTime="Report" theme="aegean">
-					<reportElement x="10" y="80" width="535" height="200" uuid="d7343365-3e67-4542-a312-8a6c49ebbcf3"/>
+					<reportElement x="10" y="90" width="535" height="300" uuid="d7343365-3e67-4542-a312-8a6c49ebbcf3"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend position="Top"/>
