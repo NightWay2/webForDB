@@ -184,7 +184,7 @@ public class UniversalReportService {
 
         List<UniversalReportModel> fields = findAllParams(
                 "select category, count_of " +
-                        "from report2 where id_station = '" + stationId + "' " +
+                        "from report3 where id_station = '" + stationId + "' " +
                         "group by category, count_of", 3, 2);
 
         String stationName = findStationNameById(stationId);

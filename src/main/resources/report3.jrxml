@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Simple_Blue" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c591bf9f-a780-4cf6-9921-938c41f22a3b">
+	<parameter name="stationName" class="java.lang.String"/>
+	<field name="designation" class="java.lang.String"/>
+	<field name="countOf" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="310">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="66c5ef2e-2c8d-4a7c-a345-5ab427b36159"/>
+				<staticText>
+					<reportElement x="20" y="20" width="544" height="30" forecolor="#FFFFFF" uuid="26040c49-dacc-4245-a514-9ea47f5f863c"/>
+					<textElement>
+						<font size="22" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Optimal values for sulfur dioxide (SO2) on the]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="b86dd398-944b-4438-b441-7baa0e24f3d3"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+				</staticText>
+				<textField>
+					<reportElement x="20" y="50" width="345" height="30" forecolor="#FFFFFF" uuid="2e25236a-6282-4fb7-a132-eba9d25fa1b7">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement>
+						<font size="22"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{stationName}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<barChart>
+				<chart evaluationTime="Report" theme="aegean">
+					<reportElement x="100" y="90" width="364" height="200" uuid="44b462bc-d29a-4d37-b266-99eedbbdbbc6"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["SO2"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{designation}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{countOf}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="576569d1-cc17-4c0f-ad20-c848ca89e900"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="210" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="41aa05d1-c52f-4025-9d2f-0721c88b18ef">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3fa2048-5685-4180-aadc-0e15d2ad38b4"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Category]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="210" y="0" width="344" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="410c1641-c4cf-4079-8140-d55c4ae8ef97">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d688145-6f91-40ae-bc6f-5a37c6766bde"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Count of SO2]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="0e448bd3-cb47-4591-9759-18dba57b819f"/>
+			</line>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="200" height="20" uuid="68349b94-32f6-420b-90ac-4cc75d1a62dd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3fa2048-5685-4180-aadc-0e15d2ad38b4"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{designation}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="210" y="0" width="344" height="20" uuid="6e4928c2-983d-4099-90ce-409a419f22af">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d688145-6f91-40ae-bc6f-5a37c6766bde"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{countOf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="07b86de0-087d-47a9-bdbe-4addc05f2942"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="49eb4c94-e0cf-487d-a7d9-2f1d78d88bbc"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="e415044d-7fa2-4669-997d-43b7400778c3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
