@@ -26,7 +26,7 @@ public class UniversalReportController {
     }
 
     @GetMapping("/choose_option/choose_report/report1")
-    public String showFormForReport1(Model model) {
+    public String showFormForReport1() {
         if (!dbConnectHelper.checkConnection()) {
             return "redirect:/login";
         }
