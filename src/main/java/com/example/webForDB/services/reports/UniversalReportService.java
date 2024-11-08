@@ -158,58 +158,18 @@ public class UniversalReportService {
         return stations;
     }
 
-    // using only for report2
-    public void exportJasperReport2(HttpServletResponse response, String stationId)
+    // using for report 2, 3, 4
+    public void exportJasperReport234(HttpServletResponse response, String stationId, int report)
             throws IOException, JRException {
 
         List<UniversalReportModel> fields = findAllParams(
                 "select category, count_of " +
-                "from report2 where id_station = '" + stationId + "' " +
-                "group by category, count_of", 2, 2);
+                "from report" + report + " where id_station = '" + stationId + "' " +
+                "group by category, count_of", report, 2);
 
         String stationName = findStationNameById(stationId);
 
-        File file = ResourceUtils.getFile("classpath:report2.jrxml");
-        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(fields);
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("stationName", stationName);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-        JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
-    }
-
-    // using only for report3
-    public void exportJasperReport3(HttpServletResponse response, String stationId)
-            throws IOException, JRException {
-
-        List<UniversalReportModel> fields = findAllParams(
-                "select category, count_of " +
-                        "from report3 where id_station = '" + stationId + "' " +
-                        "group by category, count_of", 3, 2);
-
-        String stationName = findStationNameById(stationId);
-
-        File file = ResourceUtils.getFile("classpath:report3.jrxml");
-        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(fields);
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("stationName", stationName);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
-        JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
-    }
-
-    // using only for report4
-    public void exportJasperReport4(HttpServletResponse response, String stationId) // todo change if need
-            throws IOException, JRException {
-
-        List<UniversalReportModel> fields = findAllParams(
-                "select category, count_of " +
-                        "from report4 where id_station = '" + stationId + "' " +
-                        "group by category, count_of", 4, 2);
-
-        String stationName = findStationNameById(stationId);
-
-        File file = ResourceUtils.getFile("classpath:report4.jrxml");
+        File file = ResourceUtils.getFile("classpath:report" + report + ".jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(fields);
         Map<String, Object> parameters = new HashMap<>();

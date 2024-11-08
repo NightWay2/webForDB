@@ -70,7 +70,7 @@ public class UniversalReportController {
         String headerValue = "inline; filename=report.pdf";
         response.setHeader(headerKey, headerValue);
 
-        service.exportJasperReport2(response, stationId);
+        service.exportJasperReport234(response, stationId, 2);
     }
 
     @GetMapping("/choose_option/choose_report/report3")
@@ -94,7 +94,7 @@ public class UniversalReportController {
         String headerValue = "inline; filename=report.pdf";
         response.setHeader(headerKey, headerValue);
 
-        service.exportJasperReport3(response, stationId);
+        service.exportJasperReport234(response, stationId, 3);
     }
 
     @GetMapping("/choose_option/choose_report/report4")
@@ -118,6 +118,6 @@ public class UniversalReportController {
         String headerValue = "inline; filename=report.pdf";
         response.setHeader(headerKey, headerValue);
 
-        service.exportJasperReport4(response, stationId);
+        service.exportJasperReport234(response, stationId, 4);
     }
 }
